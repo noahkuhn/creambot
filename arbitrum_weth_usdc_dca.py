@@ -54,6 +54,7 @@ def main():
 	
 	print()
 	print("CONTRACTS:")
+	
 	# Create some token objects. If you want to trade different tokens, you will need to 
 	# create objects for them in the same format as you see below, add them to the tokens 
 	# array, and then use their object names in the swap function
@@ -91,8 +92,6 @@ def main():
 					print(f" {token.name()} on {router} OK")
 	print()
 	
-	
-	
 	# Lets set up our variables. Constants (FEE, AMOUNT, SLIPPAGE) are set at the top of this file.
 	tokenIn = usdc
 	tokenOut = weth
@@ -104,9 +103,6 @@ def main():
 	
 	tx_params = {
 		"from": user.address,
-		#"chainId": brownie.chain.id,
-		#"gas": TX_GAS_LIMIT,
-		#"nonce": recipient.nonce,
 	}
 		
 	input_balance = tokenIn.balanceOf(user.address)
@@ -134,7 +130,6 @@ def main():
 	# Try to get the swap rate (price). Need to use .call() to simulate this, 
 	# as it uses gas to call quoteExactInputSingle directly
 	try:
-		
 		amountOutMinimum = uniswap_quoter.quoteExactInputSingle.call(
 			tokenIn.address,
 			tokenOut.address,
@@ -198,13 +193,9 @@ def main():
 
 def getContract(address):
 	try:
-		contract = brownie.Contract(
-			address,
-		)
+		contract = brownie.Contract(address,)
 	except:
-		contract = brownie.Contract.from_explorer(
-			address,
-		)
+		contract = brownie.Contract.from_explorer(address,)
 	return contract
 
 if __name__ == '__main__':

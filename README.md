@@ -35,18 +35,9 @@ Once that is set, you need to send that wallet some ETH so it can transact. Arbi
 
 Simple bot that does a one-way swap from USDC > WETH on Arbitrum. You need to have USDC in your wallet in order to use this.
 
-This is set up such that it could live on a VPS and be called by cron. Thus I have the wallet password set in an .env file so the script can be called without user intervention. You will need to create your own .env file and set two constants
+This is set up such that it could live on a VPS and be called by cron. Thus I have the wallet password set in an .env file so the script can be called without user intervention. You will need to create your own .env file and set two constants. There is an .env-example file that demonstrates this.
 
-- **BROWNIE_ACCOUNT**: the name of the account you created above
-- **BROWNIE_PASSWORD**:the password you set when you created the account
+- **BROWNIE_ACCOUNT**: the name of the account you created above.
+- **BROWNIE_PASSWORD**: the password you set when you created the account.
 
-For example, your .env file would look like:
-
-`
-BROWNIE_ACCOUNT = 'creambot'
-BROWNIE_PASSWORD = 123456789abcdefg
-`
-
-This isn't the most secure, so if you only intend to call this manually, just omit the password parameter from the brownie.accounts.load call, don't add that line to your .env. and comment out the BROWNIE_PASSWORD constant assignment
-
-
+This isn't the most secure, so if you only intend to call this manually, just omit the password parameter from the brownie.accounts.load call, don't add that line to your .env, and comment out the BROWNIE_PASSWORD constant assignment.
