@@ -163,10 +163,14 @@ def main():
 		# Lets try to make our swap
 		try:
 			
+			print()
+			print('TRANSACTION:')
+			print(f" Swapping {AMOUNT} {tokenIn.symbol()} for at least {amountOutMinimum / 10**tokenOut.decimals()} {tokenOut.symbol()} at a price of {AMOUNT / (amountOutMinimum / 10**tokenOut.decimals())}")
+			
 			# If it's a real swap, submit it
 			if not DRY_RUN:
 				print()
-				print("SENDING TRANSACTION")
+				print(" LIVE transaction")
 				
 				# Submit our transaction
 				uniswap_router2.multicall['uint256,bytes[]'](
@@ -176,20 +180,22 @@ def main():
 				)
 			# Placeholder for Dry Run	
 			else:
-				print()
-				print(f"DRY RUN TRANSACTION:")
+				print(f" TEST transaction")
 		
 		# Bad news, something went wrong	
 		except Exception as e:
 			print()
-			print(f"TRANSACTION FAILED: {e}")
+			print(f" Transaction failed: {e}")
 			print()
 		
 		# Good news, transaction sent to blockchain!	
 		else:
-			print()
-			print("!!!TRANSACTION SENT!!!")
-			print()
+			if not DRY_RUN:
+				print(" Transaction complete.")
+				print()
+			else:
+				print(" Transaction would send here.")
+				print()
 
 def getContract(address):
 	try:
