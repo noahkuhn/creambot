@@ -41,3 +41,7 @@ This is set up such that it could live on a VPS and be called by cron. Thus I ha
 - **BROWNIE_PASSWORD**: the password you set when you created the account.
 
 This isn't the most secure, so if you only intend to call this manually, just omit the password parameter from the brownie.accounts.load call, don't add that line to your .env, and comment out the BROWNIE_PASSWORD constant assignment.
+
+Call it like so:
+
+`$ python arbitrum_weth_usdc_dca.py`
