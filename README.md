@@ -1,5 +1,5 @@
 # C.R.E.A.M. Bot
-This is a collection of scripts to do fun things with Blockchain
+This is a collection of scripts to do fun things with Python on various blockchains.
 
 Ideally you would install a virtual environment manager. I use [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html), specifically Miniconda. Once you have that installed, you can create a new environment like so:
 
