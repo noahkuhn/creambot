@@ -42,6 +42,6 @@ This is set up such that it could live on a VPS and be called by cron. Thus I ha
 
 This isn't the most secure, so if you only intend to call this manually, just omit the password parameter from the brownie.accounts.load call, don't add that line to your .env, and comment out the BROWNIE_PASSWORD constant assignment.
 
-Call it like so:
+By default this script has a **DRY_RUN** constant set as *True* which means the transaction won't actually submit. In order to really do a swap, you need to set **DRY_RUN** to *False*. Then call it like so:
 
 `$ python arbitrum_weth_usdc_dca.py`
