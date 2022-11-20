@@ -9,7 +9,11 @@ Where the NAME is whatever you want to call your environment, and the VERSION is
 
 `$ conda create --name creambot python=3.10.8`
 
-These scripts have various requirements that will be added to requirements.txt as needed. The requirements vary depending on the script. Once you have your environment set up you can use pip to install them like so:
+These scripts have various requirements that will be added to requirements.txt as needed. The requirements vary depending on the script. Once you have your environment set up, make sure you activate it
+
+`$ conda activate NAME`
+
+Once activated, you can use pip to install them like so:
 
 `$ pip install -r requirements.txt`
 
