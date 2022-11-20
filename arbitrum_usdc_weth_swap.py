@@ -145,7 +145,7 @@ def main():
 		
 	# Success, we got the swap rate (price)
 	else:
-		amountOutMinimum = amountOutIdeal * (1-SLIPPAGE)
+		amountOutMinimum = round(amountOutIdeal * (1-SLIPPAGE))
 		
 		if VERBOSE_PRINTS:
 			print(f" amountOutMinimum: {amountOutMinimum} ({amountOutMinimum / 10**tokenOut.decimals()} {tokenOut.symbol()})")
@@ -168,7 +168,7 @@ def main():
 			
 			print()
 			print('TRANSACTION:')
-			print(f" Swapping {AMOUNT} {tokenIn.symbol()} for at least {(amountOutMinimum * (1-SLIPPAGE)) / 10**tokenOut.decimals()} {tokenOut.symbol()} at a price of {AMOUNT / (amountOutMinimum / 10**tokenOut.decimals())}")
+			print(f" Swapping {AMOUNT} {tokenIn.symbol()} for at least {amountOutMinimum / 10**tokenOut.decimals()} {tokenOut.symbol()} at a price of {AMOUNT / (amountOutMinimum / 10**tokenOut.decimals())}")
 			
 			# If it's a real swap, submit it
 			if not DRY_RUN:
