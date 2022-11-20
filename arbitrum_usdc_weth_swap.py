@@ -130,14 +130,14 @@ def main():
 	# Try to get the swap rate (price). Need to use .call() to simulate this, 
 	# as it uses gas to call quoteExactInputSingle directly
 	try:
-		amountOutMinimum = uniswap_quoter.quoteExactInputSingle.call(
+		amountOutIdeal = uniswap_quoter.quoteExactInputSingle.call(
 			tokenIn.address,
 			tokenOut.address,
 			fee,
 			amountIn,
 			sqrtPriceLimitX96,
 		)
-		print(f" amountOutIdeal: {amountOutMinimum} ({amountOutMinimum / 10**tokenOut.decimals()} {tokenOut.symbol()})")
+		print(f" amountOutIdeal: {amountOutIdeal} ({amountOutIdeal / 10**tokenOut.decimals()} {tokenOut.symbol()})")
 	
 	# No good, query failed for some reason
 	except Exception as e:
@@ -145,7 +145,7 @@ def main():
 		
 	# Success, we got the swap rate (price)
 	else:
-		amountOutMinimum = amountOutMinimum * (1-SLIPPAGE)
+		amountOutMinimum = amountOutIdeal * (1-SLIPPAGE)
 		
 		if VERBOSE_PRINTS:
 			print(f" amountOutMinimum: {amountOutMinimum} ({amountOutMinimum / 10**tokenOut.decimals()} {tokenOut.symbol()})")
