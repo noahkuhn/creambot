@@ -137,6 +137,7 @@ def main():
 			amountIn,
 			sqrtPriceLimitX96,
 		)
+		print(f" amountOutIdeal: {amountOutMinimum} ({amountOutMinimum / 10**tokenOut.decimals()} {tokenOut.symbol()})")
 	
 	# No good, query failed for some reason
 	except Exception as e:
@@ -144,6 +145,8 @@ def main():
 		
 	# Success, we got the swap rate (price)
 	else:
+		amountOutMinimum = amountOutMinimum * (1-SLIPPAGE)
+		
 		if VERBOSE_PRINTS:
 			print(f" amountOutMinimum: {amountOutMinimum} ({amountOutMinimum / 10**tokenOut.decimals()} {tokenOut.symbol()})")
 		
@@ -155,7 +158,7 @@ def main():
 				fee,
 				recipient.address,
 				amountIn,
-				amountOutMinimum * (1-SLIPPAGE),
+				amountOutMinimum,
 				sqrtPriceLimitX96,
 			)
 		)
