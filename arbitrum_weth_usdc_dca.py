@@ -6,7 +6,7 @@ load_dotenv()
 
 BROWNIE_NETWORK = 'arbitrum-main'
 
-# Set these in an .env file at the same level as this fileconda update -n base -c defaults conda
+# Set these in an .env file at the same level as this file
 BROWNIE_ACCOUNT = os.environ['BROWNIE_ACCOUNT']
 BROWNIE_PASSWORD = os.environ['BROWNIE_PASSWORD']
 
@@ -165,7 +165,7 @@ def main():
 			
 			print()
 			print('TRANSACTION:')
-			print(f" Swapping {AMOUNT} {tokenIn.symbol()} for at least {amountOutMinimum / 10**tokenOut.decimals()} {tokenOut.symbol()} at a price of {AMOUNT / (amountOutMinimum / 10**tokenOut.decimals())}")
+			print(f" Swapping {AMOUNT} {tokenIn.symbol()} for at least {(amountOutMinimum * (1-SLIPPAGE)) / 10**tokenOut.decimals()} {tokenOut.symbol()} at a price of {AMOUNT / (amountOutMinimum / 10**tokenOut.decimals())}")
 			
 			# If it's a real swap, submit it
 			if not DRY_RUN:
@@ -197,12 +197,15 @@ def main():
 				print(" Transaction would send here.")
 				print()
 
+
+# Function to get Contracts so you can use their functions
 def getContract(address):
 	try:
 		contract = brownie.Contract(address,)
 	except:
 		contract = brownie.Contract.from_explorer(address,)
 	return contract
+
 
 if __name__ == '__main__':
 	main()
