@@ -60,3 +60,15 @@ Create a file in your home directory. Call it whatever you like: **filename.sh**
     source /PATH_TO_CONDA_BIN/activate ENVIRONMENT_NAME
     python /PATH_TO_SCRIPT/PYTHON_FILENAME.py
     conda deactivate
+
+Finally, on your VPS, edit the crontab
+
+    $ crontab -e
+
+This will open up an editor, scroll to the bottom. Hit the **i** key to switch to Insert mode, and add a new line at the bottom, which will call your .sh file on a set schedule
+
+    20 4 * * * /PATH_TO_FILE/filename.sh
+   
+For info on cron formatting, go play around with [crontab.guru](https://crontab.guru)
+
+Finally, save your crontab by hitting **esc** to exit Insert mode. Finally type **:wq** and hit **enter** to write the file and quit. You should see a message saying **crontab: installing new crontab**
