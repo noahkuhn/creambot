@@ -48,7 +48,7 @@ This isn't the most secure, so if you only intend to call this manually, just om
 
 By default this script has a **DRY_RUN** constant set as *True* which means the transaction won't actually submit. In order to really do a swap, you need to set **DRY_RUN** to *False*. Then call it like so:
 
-`$ python arbitrum_weth_usdc_dca.py`
+`$ python arbitrum_usdc_weth_swap.py`
 
 # Cron
 
