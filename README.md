@@ -35,7 +35,7 @@ You'll need to record the mnemonic and set a password. **Keep these secret, keep
 Once that is set, you need to send that wallet some ETH so it can transact. Arbitrum gas is pretty cheap, so you can start with $10 or so. Then depending on the bot, you may need to send some other tokens (USDC, WETH, etc).
 
 # Bots
-## arbitrum_weth_usdc_dca.py
+## arbitrum_usdc_weth_swap.py
 
 Simple bot that does a one-way swap from USDC > WETH on Arbitrum. You need to have USDC in your wallet in order to use this.
 
@@ -49,3 +49,14 @@ This isn't the most secure, so if you only intend to call this manually, just om
 By default this script has a **DRY_RUN** constant set as *True* which means the transaction won't actually submit. In order to really do a swap, you need to set **DRY_RUN** to *False*. Then call it like so:
 
 `$ python arbitrum_weth_usdc_dca.py`
+
+# Cron
+
+So the point of some of these bots is to be able to automatically call them with a Cron job on a VPS, to effectively set up a DCA buy on a schedule of your choosing. In order to make this work with conda environments, you need to set up a simple shell script to activate the environment, call the script, and then deactivate the enivornment.
+
+Create a file in your home directory. Call it whatever you like: **filename.sh**. Then within, add the following. Make sure to set the paths based on your setup.
+
+    #!/bin/bash
+    source /PATH_TO_CONDA_BIN/activate ENVIRONMENT_NAME
+    python /PATH_TO_SCRIPT/PYTHON_FILENAME.py
+    conda deactivate

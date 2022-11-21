@@ -15,7 +15,7 @@ FEE = 500 # 500, 3000 or 10000 corresponding to 0.05%, 0.3%, or 1.0% pools
 AMOUNT = 2 # Amount of tokens to swap. This is all set up for USDC, so this is $x dollars
 SLIPPAGE = 0.01 # Percentage of slippage to allow. This determines the minimum amount you'll receive
 VERBOSE_PRINTS = True # Prints more details about what is going on.
-DRY_RUN = True # Simulate swaps and approvals.
+DRY_RUN = True # True = Simulate swaps and approvals. False = Live
 
 # Set our token contract addresses
 USDC_CONTRACT_ADDRESS = '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8'
